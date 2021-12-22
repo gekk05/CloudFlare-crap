@@ -63,7 +63,7 @@ def ban_ip(ip):
         print("Bad IP {} found in rules".format(ip))
     else:
         rules["result"][0]["filter"]["expression"] += " or {}".format(new_rule) #rules["result"][0]["filter"]["expression"] + new_rule
-        data = '[{"id":"%s","action":"block","priority": 0 ,"paused":false,"description":"Dotathot Firewall","expression":"%s","paused":false,"description":"Restrict access from these browsers on this address range."}]' % (FWFILTER_ID,rules["result"][0]["filter"]["expression"].replace('"', '\\"'))
+        data = '[{"id":"%s","action":"block","priority": 0 ,"paused":false,"description":"Script Firewall","expression":"%s","paused":false,"description":"Restrict access from these browsers on this address range."}]' % (FWFILTER_ID,rules["result"][0]["filter"]["expression"].replace('"', '\\"'))
         r = requests.put("https://api.cloudflare.com/client/v4/zones/{}/filters".format(zone_id), headers=headers, data=data)
         print(r.text)
         print("Added new rule: {}".format(new_rule))
