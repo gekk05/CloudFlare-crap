@@ -32,17 +32,17 @@ def check_cpu():
 
 def enable_second_highest_sec():
     body =  {"value": "High"}
-    requests.patch("https://api.cloudflare.com/client/v4/zones/{}/settings/security_level".format(zone_id), data=body)
+    requests.patch("https://api.cloudflare.com/client/v4/zones/{}/settings/security_level".format(zone_id), data=body,headers=headers)
     print("CloudFlare attack mode has been enabled: {}".format(time.asctime(time.localtime())))
 
 def enable_medium_sec(): #default
     body =  {"value": "Medium"}
-    requests.patch("https://api.cloudflare.com/client/v4/zones/{}/settings/security_level".format(zone_id), data=body)
+    requests.patch("https://api.cloudflare.com/client/v4/zones/{}/settings/security_level".format(zone_id), data=body, headers=headers)
     print("CloudFlare attack mode has been enabled: {}".format(time.asctime(time.localtime())))
 
 def enable_am():
     body =  {"value": "under_attack"}
-    requests.patch("https://api.cloudflare.com/client/v4/zones/{}/settings/security_level".format(zone_id), data=body)
+    requests.patch("https://api.cloudflare.com/client/v4/zones/{}/settings/security_level".format(zone_id), data=body, headers=headers)
     print("CloudFlare attack mode has been enabled: {}".format(time.asctime(time.localtime())))
 
 def get_security_level():
